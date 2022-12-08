@@ -3,16 +3,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once './config.php';
-require_once './SpeedSMSAPI.php';
+require_once './TCSotpAPI.php';
 
 
 $config = new Config();
-$otpClient = new SpeedSMSAPI("Token");
-
+$otpClient = new TCSotpAPI();
 
 try {
     $response = [];
-    
+
     $city = isset($_POST['city']) ? $_POST['city'] : false;
     $phone = isset($_POST['phone']) ? $_POST['phone'] : false;
 
@@ -50,17 +49,25 @@ try {
         throw new Exception('Số điện thoại đã được xác nhận');
     }
 
-    $code = generateRandomString(6);
+    $phoneEnc = generatePhoneCrypt($phone);
+    $otpResponse = $otpClient->sendSMS($phoneEnc);
 
-    // $otpResponse = $otpClient->sendSMS([$phone], $code, SpeedSMSAPI::SMS_TYPE_CSKH, "");
-    // if (!is_array($otpClient)) {
-    //     throw new Exception(
-    //         'Không thể gửi OTP'
-    //     );
-    // }
+    if (!is_array($otpResponse)) {
+        throw new Exception(
+            'Không thể gửi OTP'
+        );
+    }
+
+    $log = "";
+    if ($otpResponse['messageCode'] != 1) {
+        throw new Exception(
+            'Không thể gửi OTP'
+        );
+        $log = $otpResponse['message'];
+    }
 
     $db = $config->getConnection();
-    $query = "INSERT INTO customer_otp(phone,city,otp_code,active) VALUES('$phone','$city','$code',0)";
+    $query = "INSERT INTO customer_otp(phone,city,otp_code,active) VALUES('$phone','$city','',0)";
     $checkStatement =  $config->getConnection()->query($query);
     if (!$checkStatement) {
         throw new Exception(
@@ -89,4 +96,20 @@ function generateRandomString($length = 10) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
+}
+
+function generatePhoneCrypt($phone) {
+    $iv = "StG@2o2O";
+    $key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDR0MWU0QxABmcymsMkJ4UUClnAhYA1mQfz0Gk2wb6MbajE6W4mEl3tN2LGlB5W+c8vH8HnO4mg61d9vurdW3LAoc8801Oeu8yBuGpplhSjNGvmBxPFXOQPVDjaSZ6k/RJme7bbzhc65e+GtWQh5PR58X35xBGYRG6JfPAWIZGKQIDAQAB";
+
+    $encString = openssl_encrypt($phone, 'DES-CBC', $key, $options = 0, $iv);
+    return $encString;
+}
+
+function decryptPhone($phoneEnc) {
+    $iv = "StG@2o2O";
+    $key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDR0MWU0QxABmcymsMkJ4UUClnAhYA1mQfz0Gk2wb6MbajE6W4mEl3tN2LGlB5W+c8vH8HnO4mg61d9vurdW3LAoc8801Oeu8yBuGpplhSjNGvmBxPFXOQPVDjaSZ6k/RJme7bbzhc65e+GtWQh5PR58X35xBGYRG6JfPAWIZGKQIDAQAB";
+
+    $encString = openssl_decrypt($phoneEnc, 'DES-CBC', $key, $options = 0, $iv);
+    return $encString;
 }

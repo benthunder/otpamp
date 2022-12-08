@@ -24,6 +24,7 @@ class Config {
     private function initConnection() {
         if (is_null($this->connection)) {
             $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbname);
+            $this->connection->set_charset("utf8");
         }
     }
 

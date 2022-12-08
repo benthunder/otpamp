@@ -1,11 +1,10 @@
 <?php
 
 require_once './config.php';
-require_once './SpeedSMSAPI.php';
+require_once './TCSotpAPI.php';
 
 $config = new Config();
-$otpClient = new SpeedSMSAPI("Token");
-
+$otpClient = new TCSotpAPI();
 
 try {
     $response = [];
@@ -44,16 +43,23 @@ try {
         }
     }
 
-    // $code = generateRandomString(6);
-    // $otpResponse = $otpClient->sendSMS([$phone], $code, SpeedSMSAPI::SMS_TYPE_CSKH, "");
-    // if (!is_array($otpClient)) {
-    //     throw new Exception(
-    //         'Không thể gửi OTP'
-    //     );
-    // }
+    $phoneEnc = generatePhoneCrypt($phone);
+    $otpResponse = $otpClient->sendSMS($phoneEnc);
+    if (!is_array($otpClient)) {
+        throw new Exception(
+            'Không thể gửi OTP'
+        );
+    }
+
+    if ($otpClient['messageCode'] != 1) {
+        throw new Exception(
+            'Không thể gửi OTP'
+        );
+    }
+
     $code = generateRandomString(6);
     $db = $config->getConnection();
-    $query = "UPDATE customer_otp SET otp_code = '$code' WHERE phone='$phone'";
+    $query = "UPDATE customer_otp SET otp_code = '' WHERE phone='$phone' ";
 
     $checkStatement =  $config->getConnection()->query($query);
     if (!$checkStatement) {
@@ -83,4 +89,12 @@ function generateRandomString($length = 10) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
+}
+
+function generatePhoneCrypt($phone) {
+    $iv = "StG@2o2O";
+    $key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDR0MWU0QxABmcymsMkJ4UUClnAhYA1mQfz0Gk2wb6MbajE6W4mEl3tN2LGlB5W+c8vH8HnO4mg61d9vurdW3LAoc8801Oeu8yBuGpplhSjNGvmBxPFXOQPVDjaSZ6k/RJme7bbzhc65e+GtWQh5PR58X35xBGYRG6JfPAWIZGKQIDAQAB";
+
+    $encString = openssl_encrypt($phone, 'DES-CBC', $key, $options = 0, $iv);
+    return $encString;
 }

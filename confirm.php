@@ -1,8 +1,9 @@
 <?php
 require_once './config.php';
-require_once './SpeedSMSAPI.php';
+require_once './TCSotpAPI.php';
 
 $config = new Config();
+$otpClient = new TCSotpAPI();
 
 try {
     $response = [];
@@ -19,7 +20,7 @@ try {
     }
 
     $response['phone'] = $phone;
-    $customer = $config->getConnection()->query("SELECT * FROM customer_otp WHERE phone = '$phone' AND otp_code = '$code' LIMIT 1");
+    $customer = $config->getConnection()->query("SELECT * FROM customer_otp WHERE phone = '$phone' LIMIT 1");
 
 
     if ($customer->num_rows < 1) {
@@ -27,7 +28,7 @@ try {
         $response['is_hide_main_form'] = true;
         $response['is_hide_confirm'] = false;
 
-        throw new Exception('Không đúng OTP hoặc Số điện thoại');
+        throw new Exception('Không đúng Số điện thoại');
     }
 
     $customer = $config->getConnection()->query("SELECT * FROM customer_otp WHERE phone = '$phone' AND active = 1 LIMIT 1");
@@ -37,26 +38,27 @@ try {
         $response['is_hide_confirm'] = false;
 
         // throw new Exception('Số điện thoại đã được xác nhận');
+
+        return $response;
     }
 
-    $liveTimeSec = 300;
-    $customer = $config->getConnection()->query("SELECT * , TIME_TO_SEC(TIMEDIFF(NOW(), created_at)) AS min_diff FROM customer_otp WHERE phone = '$phone' AND otp_code = '$code' LIMIT 1");
+    $otpClient->verifyToken($phone, $code);
 
-    $rows = $customer->fetch_all(MYSQLI_ASSOC);
+    $otpResponse = $otpClient->sendSMS($phone);
+    if (!is_array($otpClient)) {
+        throw new Exception(
+            'OTP không đúng'
+        );
+    }
 
-    foreach ($rows as $row) {
-        if ($row['min_diff'] > $liveTimeSec) {
-            $response['is_hide_reset'] = false;
-            $response['is_hide_main_form'] = true;
-            $response['is_hide_confirm'] = true;
-
-            throw new Exception('');
-            return $response;
-        }
+    if ($otpClient['messageCode'] != 1) {
+        throw new Exception(
+            'OTP không đúng'
+        );
     }
 
     $db = $config->getConnection();
-    $query = "UPDATE  customer_otp SET active=1 WHERE phone = '$phone' AND otp_code = '$code'";
+    $query = "UPDATE customer_otp SET active=1 WHERE phone = '$phone' AND otp_code = '$code'";
 
     $checkStatement =  $config->getConnection()->query($query);
     if (!$checkStatement) {
