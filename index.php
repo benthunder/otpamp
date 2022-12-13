@@ -762,8 +762,8 @@
       <div id="DIV69668719">
         <div class="form-wrapper" style="padding: 0;">
           <form [hidden]="is_hide_main_form" id='form1' method="post" 
-          action-xhr="//118.71.251.188:59004/api/v1/authentication/request-otp-without-encrypt" 
-          verify-xhr="//118.71.251.188:59004/api/v1/authentication/request-otp-without-encrypt" 
+          action-xhr="//localhost/otpamp/getotp.php" 
+          verify-xhr="//localhost/otpamp/getotp.php" 
           on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})"
           enctype="application/x-www-form-urlencoded" target="_top">
             <div class="step">
@@ -818,7 +818,7 @@
               </template>
             </div>
           </form>
-          <form hidden [hidden]="is_hide_confirm" id='form2' method="post" action-xhr="//otp-sms-demo:8888/confirm.php" verify-xhr="//otp-sms-demo:8888/confirm.php" on="submit-error:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
+          <form hidden [hidden]="is_hide_confirm" id='form2' method="post" action-xhr="//localhost/otpamp/confirm.php" verify-xhr="//localhost/otpamp/confirm.php" on="submit-error:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
 
             <div class="step">
               <input hidden name="cellphone" id="phone-confirm" [value]="cellphone">
@@ -852,7 +852,7 @@
 
           </form>
 
-          <form hidden [hidden]="is_hide_reset" id='form3' method="post" action-xhr="//otp-sms-demo:8888/resendotp.php" verify-xhr="//otp-sms-demo:8888/resendotp.php" 
+          <form hidden [hidden]="is_hide_reset" id='form3' method="post" action-xhr="//localhost/otpamp/resendotp.php" verify-xhr="//localhost/otpamp/resendotp.php" 
           on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
 
             <p class="qa">
