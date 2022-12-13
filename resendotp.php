@@ -2,8 +2,8 @@
 header('HTTP/1.1 200 OK');
 header("access-control-allow-credentials:true");
 header("AMP-Same-Origin: true");
-header("Access-Control-Allow-Origin:".$_SERVER['HTTP_ORIGIN']);
-header("amp-access-control-allow-source-origin: https://".$_SERVER['HTTP_HOST']);
+header("Access-Control-Allow-Origin:" . $_SERVER['HTTP_ORIGIN']);
+header("amp-access-control-allow-source-origin: https://" . $_SERVER['HTTP_HOST']);
 header("Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin");
 header("access-control-allow-headers:Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token");
 header("access-control-allow-methods:POST, GET, OPTIONS");
@@ -15,7 +15,7 @@ $otpClient = new TCSotpAPI();
 try {
     $response = [];
     $phone = isset($_POST['cellphone']) ? $_POST['cellphone'] : false;
-    
+
     if (!$phone) {
         throw new Exception(
             'Thiếu dữ liệu , xin nhập lại'
@@ -48,4 +48,3 @@ try {
     echo json_encode($response);
     exit();
 }
-

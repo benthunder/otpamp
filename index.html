@@ -136,7 +136,7 @@
       max-width: 600px;
       padding: 1em;
       margin: 0 auto;
-      background: url('bg.jpg') no-repeat;
+      background: url('https://2e37-14-240-0-170.ap.ngrok.io/otpamp/bg.jpg') no-repeat;
       background-size: cover;
       height: 900px;
     }
@@ -716,29 +716,47 @@
       word-wrap: normal;
       word-break: break-word;
       font-weight: 700;
-      margin:0px auto;
-      display:block;
+      margin: 0px auto;
+      display: block;
     }
 
     #form_otpSMS .question {
       font-weight: 700;
     }
-    #lbl_sn, #joinDate {
+
+    #lbl_sn,
+    #joinDate {
       width: 46%;
       float: left;
       margin-right: 20px;
     }
 
-    #lbl_gioitinh, #input_gt {
+    #lbl_gioitinh,
+    #input_gt {
       width: 46%;
       float: right;
-      
+
     }
+
     #input_gtNam,
     #input_gtNu,
     #input_gtOther {
       width: 4%;
       margin: 10px 0px 22px 5px;
+    }
+
+    #otp-confirm-code_1,
+    #otp-confirm-code_2,
+    #otp-confirm-code_3,
+    #otp-confirm-code_4 {
+      width: 50px;
+      height: 50px;
+      margin: 40px 10px;
+      text-align: center;
+      font-size: 20px;
+      color: #9e2800;
+      font-weight: 700;
+      border: 1px solid #fd9301;
     }
   </style>
 </head>
@@ -761,11 +779,10 @@
       align="left">
       <div id="DIV69668719">
         <div class="form-wrapper" style="padding: 0;">
-          <form [hidden]="is_hide_main_form" id='form1' method="post" 
-          action-xhr="https://images.akadigital.vn/Email/OTP_API/getotp.php" 
-          verify-xhr="https://images.akadigital.vn/Email/OTP_API/getotp.php" 
-          on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})"
-          enctype="application/x-www-form-urlencoded" target="_top">
+          <form [hidden]="is_hide_main_form" id='form1' method="post"
+            action-xhr="https://2e37-14-240-0-170.ap.ngrok.io/otpamp/getotp.php"
+            on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})"
+            enctype="application/x-www-form-urlencoded">
             <div class="step">
               <p class="qa" id="P56165572">
                 <label class="question cke_edited" id="lbl_name" for="name" aria-readonly="false">Họ tên *</label>
@@ -773,22 +790,21 @@
                   name="fullName">
 
                 <label class="question cke_edited" id="lbl_sn" for="sn" aria-readonly="false">Ngày sinh *</label>
-                
+
                 <label class="question cke_edited" id="lbl_gioitinh" for="gt" aria-readonly="false">Giới tính *</label>
 
-                <input class="answer input-style" type="date" placeholder="Ngày sinh" required=""
-                  id="joinDate" name="joinDate">
+                <input class="answer input-style" type="date" placeholder="Ngày sinh" required="" id="joinDate"
+                  name="joinDate">
 
-                <input class="answer input-style" type="radio" required=""
-                  id="input_gtNam" name="gender" value="Nam" checked>
+                <input class="answer input-style" type="radio" required="" id="input_gtNam" name="gender" value="Nam"
+                  checked>
                 <label for="Nam">Nam</label>
 
-                <input class="answer input-style" type="radio" required=""
-                  id="input_gtNu" name="gender" value="Nu">
+                <input class="answer input-style" type="radio" required="" id="input_gtNu" name="gender" value="Nu">
                 <label for="Nu">Nữ</label>
 
-                <input class="answer input-style" type="radio" required=""
-                  id="input_gtOther" name="gender" value="Khac">
+                <input class="answer input-style" type="radio" required="" id="input_gtOther" name="gender"
+                  value="Khac">
                 <label for="Khac">Khác</label>
 
                 <label class="question cke_edited" id="lbl_sdt" for="sdt" aria-readonly="false">Số điện thoại *</label>
@@ -796,23 +812,25 @@
                   name="cellphone" pattern="[0-9]{10}?">
 
                 <label class="question cke_edited" id="lbl_sdt" for="email" aria-readonly="false">Email *</label>
-                <input class="answer input-style" type="email" placeholder="Email" required="" id="email"
-                  name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                <input class="answer input-style" type="email" placeholder="Email" required="" id="email" name="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
               </p>
 
-                <button type="submit" class="button cke_edited" style="background-color:#fd9301;">
-                    LẤY MÃ NGAY
-                </button>
+              <button type="submit" class="button cke_edited" style="background-color:#fd9301;">
+                LẤY MÃ NGAY
+              </button>
 
             </div>
-            
+
             <div submit-error>
               <template type="amp-mustache">
-                <div id="form_otpSMS-successhtml" style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
+                <div id="form_otpSMS-successhtml"
+                  style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
                   {{#verifyErrors}}
-                    <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">
-                      {{message}}
-                    </p>
+                  <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); 
+ font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">
+                    {{message}}
+                  </p>
                   {{/verifyErrors}}
                 </div>
               </template>
@@ -820,31 +838,62 @@
 
             <div submit-success>
               <template type="amp-mustache">
-                <div class="success-message" submit-success="" style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
-                  <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;">Your response is recorded. Thanks for the feedback...</p>
+                <div class="success-message" submit-success=""
+                  style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
+                  <p style="text-align: center;font-size: 25px; color: #9e2800; 
+ font-family: Helvetica;line-height: 1.5; font-weight: 700; margin-top: 15%;">Chúc bạn một ngày vui vẻ</p>
                 </div>
               </template>
             </div>
-            
           </form>
-          <form hidden [hidden]="is_hide_confirm" id='form2' method="post" action-xhr="https://images.akadigital.vn/Email/OTP_API/confirm.php" verify-xhr="https://images.akadigital.vn/Email/OTP_API/confirm.php" on="submit-error:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
-
-            <div class="step">
+          <form hidden [hidden]="is_hide_confirm" id='form2' method="post"
+            action-xhr="https://2e37-14-240-0-170.ap.ngrok.io/otpamp/confirm.php"
+            on="submit-error:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
+            <div class="step" align="center">
               <input hidden name="cellphone" id="phone-confirm" [value]="cellphone">
               <p class="qa">
-                <label class="question cke_edited" for="otp-confirm-code" aria-readonly="false">Mã OTP*</label>
-                <input class="answer input-style" type="text" placeholder="Mã OTP" required="" id="otp-confirm-code" name="otp-confirm-code">
+                <label class="question cke_edited" for="otp-confirm-code" aria-readonly="false">
+                  <br>
+                  <strong style="font-size: 20px;">Nhập mã OTP</strong><br><br>
+                  OTP đã được gửi đến số điện thoại bạn<br>
+                </label>
+                <input class="answer input-style otp" type="hidden" required="" id="otp-confirm-code"
+                  name="otp-confirm-code">
+
+                <input class="answer input-style otp" type="text" required="" id="otp-confirm-code_1"
+                  name="otp-confirm-code-split-1"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+                  onchange="updateValueForInput()"
+                  maxlength=1>
+                <input class="answer input-style otp" type="text" required="" id="otp-confirm-code_2"
+                  name="otp-confirm-code-split-2"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+                  onchange="updateValueForInput()"
+                  maxlength=1>
+                <input class="answer input-style otp" type="text" required="" id="otp-confirm-code_3"
+                  name="otp-confirm-code-split-3"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+                  onchange="updateValueForInput()"
+                  maxlength=1>
+                <input class="answer input-style otp" type="text" required="" id="otp-confirm-code_4"
+                  name="otp-confirm-code-split-4"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+                  onchange="updateValueForInput()"
+                  maxlength=1>
               </p>
 
-              <section class="stepflowbuttons" style="text-align: center;" id="btn-resend"><button type="submit" class="button cke_edited" style="background-color: rgb(255, 0, 0);">Xác nhận<br></button></section>
+              <section class="stepflowbuttons" style="text-align: center;" id="btn-resend"><button type="submit"
+                  class="button cke_edited" style="background-color:#fd9301;">Gửi<br></button></section>
 
               <div submit-error>
                 <template type="amp-mustache">
-                  <div style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
+                  <div
+                    style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
                     {{#verifyErrors}}
-                      <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">
-                        {{message}}
-                      </p>
+                    <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); 
+ font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">
+                      {{message}}
+                    </p>
                     {{/verifyErrors}}
                   </div>
                 </template>
@@ -853,26 +902,33 @@
 
             <div submit-success>
               <template type="amp-mustache">
-                <div class="success-message" submit-success="" style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
-                  <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;">Your response is recorded. Thanks for the feedback...</p>
+                <div class="success-message" submit-success=""
+                  style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
+                  <p style="text-align: center;font-size: 25px; color: #9e2800; 
+ font-family: Helvetica;line-height: 1.5; font-weight: 700; margin-top: 15%;">Chúc bạn một ngày vui vẻ</p>
                 </div>
               </template>
             </div>
 
           </form>
 
-          <form hidden [hidden]="is_hide_reset" id='form3' method="post" action-xhr="https://images.akadigital.vn/Email/OTP_API/resendotp.php" verify-xhr="https://images.akadigital.vn/Email/OTP_API/resendotp.php" 
-          on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
+          <form hidden [hidden]="is_hide_reset" id='form3' method="post"
+            action-xhr="https://2e37-14-240-0-170.ap.ngrok.io/otpamp/resendotp.php"
+            on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
 
             <p class="qa">
               <label class="question cke_edited" for="otp-resend-phone" aria-readonly="false">Phone&nbsp;*</label>
-              <input class="answer input-style" type="tel" placeholder="Số điện thoại" required="" id="otp-resend-phone" name="cellphone" [value]="cellphone" pattern="[0-9]{10}?">
+              <input class="answer input-style" type="tel" placeholder="Số điện thoại" required="" id="otp-resend-phone"
+                name="cellphone" [value]="cellphone" pattern="[0-9]{10}?">
             </p>
 
-            <section class="stepflowbuttons" style="text-align: center;" id="btn-resend"><button type="submit" class="button cke_edited" style="background-color: rgb(255, 0, 0);">Nhận lại<br></button></section>
+            <section class="stepflowbuttons" style="text-align: center;" id="btn-resend"><button type="submit"
+                class="button cke_edited" style="background-color: #fd9301;">Nhận lại<br></button></section>
 
-            <div hidden [hidden]="is_hide_reset" class="success-message" style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
-              <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">Mã OTP đã hết hạn</p>
+            <div hidden [hidden]="is_hide_reset" class="success-message"
+              style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
+              <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); 
+ font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">Mã OTP đã hết hạn</p>
             </div>
 
           </form>
@@ -883,5 +939,19 @@
   </div>
 
 </body>
+
+
+<script type="text/javascript">
+  function updateValueForInput() {
+    let hiddenInput = document.getElementById('otp-confirm-code');
+    let inputValue = [];
+
+    let listInput = document.querySelectorAll('[name^="otp-confirm-code-split"]');
+    for (let i = 0; i < listInput.length; i++) {
+      inputValue.push(listInput[i].value);
+    }
+    hiddenInput.value = inputValue.join("");
+  }
+</script>
 
 </html>

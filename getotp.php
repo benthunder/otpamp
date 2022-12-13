@@ -2,8 +2,8 @@
 header('HTTP/1.1 200 OK');
 header("access-control-allow-credentials:true");
 header("AMP-Same-Origin: true");
-header("Access-Control-Allow-Origin:".$_SERVER['HTTP_ORIGIN']);
-header("amp-access-control-allow-source-origin: https://".$_SERVER['HTTP_HOST']);
+header("Access-Control-Allow-Origin:" . $_SERVER['HTTP_ORIGIN']);
+header("amp-access-control-allow-source-origin: https://" . $_SERVER['HTTP_HOST']);
 header("Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin");
 header("access-control-allow-headers:Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token");
 header("access-control-allow-methods:POST, GET, OPTIONS");
@@ -19,8 +19,8 @@ try {
     if (!$phone) {
 
         $response['is_hide_reset'] = true;
-        $response['is_hide_main_form'] = false;
-        $response['is_hide_confirm'] = true;
+        $response['is_hide_main_form'] = true;
+        $response['is_hide_confirm'] = false;
 
         throw new Exception(
             'Thiếu dữ liệu , xin nhập lại'
@@ -36,7 +36,7 @@ try {
     }
 
     if ($otpResponse['messageCode'] != 1) {
-        if($otpResponse['message'] == 'Số điện thoại đang gắn với nhiều tài khoản, vui lòng liên hệ hotline 19006622 để được hỗ trợ.'){
+        if ($otpResponse['message'] == 'Số điện thoại đang gắn với nhiều tài khoản, vui lòng liên hệ hotline 19006622 để được hỗ trợ.') {
             $response['is_hide_reset'] = true;
             $response['is_hide_main_form'] = false;
             $response['is_hide_confirm'] = true;
