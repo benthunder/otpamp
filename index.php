@@ -7,846 +7,823 @@
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-</head>
+  <style amp4email-boilerplate>
+    body {
+      visibility: hidden
+    }
+  </style>
+  <style amp-custom>
+    form h1,
+    form p {
+      margin: 0;
+      padding: 0;
+      padding-bottom: 10px;
+    }
 
-<style amp4email-boilerplate>
-  body {
-    visibility: hidden
-  }
-</style>
-<style amp-custom>
-  div {
-    width: auto !important;
-    float: none !important;
-  }
+    form header {
+      margin: 0 0 20px 0;
+    }
 
-  form h1,
-  form p {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 10px;
-  }
+    form header div {
+      font-size: 90%;
+      color: #999;
+    }
 
-  form header {
-    margin: 0 0 20px 0;
-  }
+    form header h2 {
+      margin: 0 0 5px 0;
+    }
 
-  form header div {
-    font-size: 90%;
-    color: #999;
-  }
-
-  form header h2 {
-    margin: 0 0 5px 0;
-  }
-
-  form>div {
-    clear: both;
-    overflow: hidden;
-    padding: 5px;
-    margin: 0 0 10px 0;
-  }
-
-  form>div>fieldset>div>div {
-    margin: 0 0 5px 0;
-  }
-
-  form>div>label,
-  legend {
-    width: 25%;
-    float: left;
-    padding-right: 10px;
-  }
-
-  form>div>div,
-  form>div>fieldset>div {
-    width: 75%;
-    float: right;
-  }
-
-  form>div>fieldset label {
-    font-size: 90%;
-  }
-
-  fieldset {
-    border: 0;
-    padding: 0;
-  }
-
-  input[type=text],
-  input[type=email],
-  input[type=url],
-  input[type=password],
-  textarea {
-    width: 100%;
-    margin: 0 0 24px 0;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-  }
-
-  input[type=text],
-  input[type=email],
-  input[type=url],
-  input[type=password] {
-    width: 50%;
-  }
-
-  input[type=text]:focus,
-  input[type=email]:focus,
-  input[type=url]:focus,
-  input[type=password]:focus,
-  textarea:focus {
-    outline: 0;
-    border-color: #4697e4;
-  }
-
-  @media (max-width: 600px) {
     form>div {
-      margin: 0 0 15px 0;
+      clear: both;
+      overflow: hidden;
+      padding: 5px;
+      margin: 0 0 10px 0;
+      color: #9e2800;
+    }
+
+    form>div>fieldset>div>div {
+      margin: 0 0 5px 0;
     }
 
     form>div>label,
     legend {
-      width: 100%;
-      float: none;
-      margin: 0 0 5px 0;
+      width: 25%;
+      float: left;
+      padding-right: 10px;
     }
 
     form>div>div,
     form>div>fieldset>div {
-      width: 100%;
-      float: none;
+      width: 75%;
+      float: right;
+    }
+
+    form>div>fieldset label {
+      font-size: 90%;
+    }
+
+    fieldset {
+      border: 0;
+      padding: 0;
     }
 
     input[type=text],
     input[type=email],
     input[type=url],
     input[type=password],
-    textarea,
-    select {
+    textarea {
       width: 100%;
-    }
-  }
-
-  @media (min-width: 1200px) {
-
-    form>div>label,
-    legend {
-      text-align: right;
-    }
-  }
-
-  .outercontainer {
-    max-width: 700px;
-    padding: 1em;
-    margin: 0 auto;
-  }
-
-  .container {
-    /*max-width: 500px;*/
-    margin: auto;
-    font-family: sans-serif;
-    padding: 1em;
-  }
-
-  .smt-block {
-    padding: 20px;
-  }
-
-  .smt-block>div {
-    padding: 0;
-  }
-
-  .smt-column {
-    padding: 0px;
-    min-height: 20px;
-  }
-
-  .smt-element {
-    padding: 0;
-  }
-
-  .block {
-    display: block;
-    width: 100%;
-  }
-
-  .m1 {
-    margin: 1em 0;
-  }
-
-  label {
-    margin-bottom: 0.5em;
-  }
-
-  .form-inline {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-  }
-
-  .form-inline label {
-    margin: 5px 10px 5px 0;
-  }
-
-  .form-inline input {
-    vertical-align: middle;
-    margin: 5px 10px 5px 0;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-  }
-
-  .form-inline button {
-    padding: 10px 20px;
-    background-color: dodgerblue;
-    border: 1px solid #ddd;
-    color: white;
-    cursor: pointer;
-  }
-
-  .form-inline button:hover {
-    background-color: royalblue;
-  }
-
-  @media (max-width: 800px) {
-    .form-inline input {
-      margin: 10px 0;
+      margin: 0 0 24px 0;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #eee;
+      border-bottom: 1px solid #eee;
     }
 
-    .form-inline {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  }
-
-  form {
-    /*border: 2px dashed black;*/
-    font-family: 'Helvetica';
-  }
-
-  /* Full-width input fields */
-  input[type=text],
-  input[type=password] {
-    width: 100%;
-    padding: 15px 0px 15px 0;
-    /* margin: 5px 0 22px 0; */
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-  }
-
-  input[type=text]:focus,
-  input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-
-  /* Overwrite default styles of hr */
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-  }
-
-  /* Set a style for the submit button */
-  .registerbtn {
-    background-color: rgb(30, 41, 59);
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-
-  .registerbtn:hover {
-    opacity: 1;
-  }
-
-  /* Add a blue text color to links */
-  a {
-    color: dodgerblue;
-  }
-
-  /* Set a grey background color and center the text of the "sign in" section */
-  .signin {
-    background-color: #f1f1f1;
-    text-align: center;
-  }
-
-  @media only screen and (min-width: 480px) {
-    .col-sm-6 {
-      max-width: 50%;
+    input[type=text],
+    input[type=email],
+    input[type=url],
+    input[type=password] {
       width: 50%;
     }
 
-    .col-sm-4 {
-      max-width: 33%;
-      width: 33%;
+    input[type=text]:focus,
+    input[type=email]:focus,
+    input[type=url]:focus,
+    input[type=password]:focus,
+    textarea:focus {
+      outline: 0;
+      border-color: #4697e4;
     }
 
-    .col-sm-3 {
-      max-width: 25%;
-      width: 25%;
-    }
+    @media (max-width: 600px) {
+      form>div {
+        margin: 0 0 15px 0;
+      }
 
-    .col-sm-8 {
-      max-width: 66.67%;
-      width: 66.67%;
-    }
-
-    .col-sm-9 {
-      max-width: 75%;
-      width: 75%;
-    }
-  }
-
-  form.amp-form-submit-success>.step {
-    display: none;
-  }
-
-  form .qa {
-    margin: 0;
-    padding: 0;
-  }
-
-  form .qa>label {
-    font-weight: 700;
-    margin: 0;
-  }
-
-  form .qa>input {
-    margin: 0 0 24px 0;
-  }
-
-  form .qa>.select {
-    margin: 0 0 24px 0;
-  }
-
-  form .qa>.new-select {
-    position: relative;
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-    padding: 0px;
-    margin: 0 0 24px 0;
-  }
-
-  form .qa input,
-  form .qa select,
-  form .qa textarea {
-    border-radius: 5px;
-    padding: 10px 12px;
-    border-color: rgb(203, 213, 225);
-    outline: none;
-  }
-
-  form .qa input:focus,
-  form .qa select:focus,
-  form .qa textarea:focus {
-    border-color: #0A8FFD;
-    box-shadow: 0 0 0 4px rgba(10, 143, 253, 0.2);
-    background: #fff;
-  }
-
-  form .qa input:hover,
-  form .qa select:hover,
-  form .qa textarea:hover {
-    border-color: #0A8FFD;
-    background: #FAFCFF;
-  }
-
-  form .form-text {
-    color: black;
-  }
-
-  form .qa .question {
-    display: block;
-    padding-bottom: 10px;
-    font-weight: 700;
-  }
-
-  form .qa .answer {
-    max-width: 100%;
-  }
-
-  form .qa .input-style {
-    color: rgb(30, 41, 59);
-    background-color: rgb(255, 255, 255);
-    font-family: Helvetica;
-    font-size: inherit;
-    width: 100%;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 5px;
-    border-color: rgb(203, 213, 225);
-    padding: 10px 12px;
-    min-height: 42px;
-    outline: none;
-    align-self: flex-start;
-    box-sizing: border-box;
-  }
-
-  textarea {
-    resize: vertical;
-  }
-
-  .nps-wrapper {
-    display: flex;
-    /*-webkit-box-pack: justify;*/
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 99%;
-  }
-
-  .nps-wrapper label {
-    color: rgb(30, 41, 59);
-    position: relative;
-    margin: 0px;
-    width: 7%;
-    height: 0px;
-    padding-bottom: 7%;
-  }
-
-  .nps-wrapper label input {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    margin: 0px;
-  }
-
-  .nps-wrapper label span {
-    cursor: pointer;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    /*-webkit-box-pack: center;*/
-    justify-content: center;
-    /*-webkit-box-align: center;*/
-    align-items: center;
-    font-size: 18px;
-    font-weight: 300;
-    border: 2px solid rgb(226, 232, 240);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .nps-wrapper span:hover {
-    border: 2px solid rgb(92, 85, 231);
-  }
-
-  .nps-wrapper label input:checked~span {
-    border: 2px solid rgb(92, 85, 231);
-    background-color: rgb(92, 85, 231);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-  }
-
-  .nps-text {
-    /* cursor: text;*/
-    font-size: 18px;
-    padding-bottom: 0;
-    padding-top: 0px;
-    font-weight: bold;
-    font-family: sans-serif;
-  }
-
-  .nps-element-section,
-  .nps-element-section.qa {
-    width: 100%;
-  }
-
-  .nps-option-section {
-    width: 100%;
-    background: #fff;
-    margin-bottom: 20px;
-    padding: 15px 0;
-  }
-
-  /* .nps-element-section, .emoji-element-section, .thumbs-element-section {
-        padding-bottom: 15px;
-        padding-top: 15px;
+      form>div>label,
+      legend {
         width: 100%;
-        background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), linear-gradient(rgba(120, 106, 255, 0.1), rgba(120, 106, 255, 0.1));
-    } */
-  .nps-option-section,
-  .emoji-option-section,
-  .thumbs-option-section {
-    width: 100%;
-  }
+        float: none;
+        margin: 0 0 5px 0;
+      }
 
-  .nps-help-text {
-    display: none;
-    justify-content: space-between;
-    padding: 0;
-  }
+      form>div>div,
+      form>div>fieldset>div {
+        width: 100%;
+        float: none;
+      }
 
-  .nps-help-text-option {
-    min-width: 4px;
-    padding: 5px 0 0 0;
-  }
+      input[type=text],
+      input[type=email],
+      input[type=url],
+      input[type=password],
+      textarea,
+      select {
+        width: 100%;
+      }
+    }
 
-  .nps-help-text-active {
-    display: flex;
-  }
+    @media (min-width: 1200px) {
 
-  /* Old emoji styles starts (for old templates) */
-  .emoji-wrapper {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
+      form>div>label,
+      legend {
+        text-align: right;
+      }
+    }
 
-  .emoji-wrapper label {
-    color: rgb(30, 41, 59);
-    position: relative;
-    margin: 0px;
-    width: 7%;
-    height: 0px;
-    padding-bottom: 7%;
-  }
+    .outercontainer {
+      max-width: 600px;
+      padding: 1em;
+      margin: 0 auto;
+      background: url('bg.jpg') no-repeat;
+      background-size: cover;
+      height: 900px;
+    }
 
-  .emoji-wrapper label input {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    margin: 0px;
-  }
+    .container {
+      /*max-width: 500px;*/
+      margin: auto;
+      font-family: sans-serif;
+      padding: 1em;
+    }
 
-  .emoji-wrapper label span {
-    cursor: pointer;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-  }
+    .smt-block {
+      padding: 20px;
+    }
 
-  /* Old emoji styles ends */
+    .smt-block>div {
+      padding: 0;
+    }
 
-  /* New emoji styles starts */
-  .new-emoji .emoji-wrapper {
-    display: block;
-    margin-bottom: 20px;
-  }
+    .smt-column {
+      padding: 0px;
+      min-height: 20px;
+    }
 
-  .new-emoji .emoji-wrapper label {
-    display: inline-block;
-    color: rgb(30, 41, 59);
-    position: relative;
-    min-width: 40px;
-    min-height: 40px;
-    margin: 0 5px;
-    width: auto;
-    height: auto;
-    padding: 0;
-  }
+    .smt-element {
+      padding: 0;
+    }
 
-  .new-emoji .emoji-wrapper label input {
-    opacity: 0;
-    position: absolute;
-    margin: 0px;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-  }
+    .block {
+      display: block;
+      width: 100%;
+    }
 
-  .new-emoji .emoji-wrapper label span {
-    position: static;
-    width: 100%;
-    height: 100%;
-    display: block;
-    cursor: pointer;
-    font-size: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
+    .m1 {
+      margin: 1em 0;
+    }
 
-  /* New emoji styles ends */
+    label {
+      margin-bottom: 0.5em;
+    }
 
-  .emoji-wrapper label input:checked~span {
-    font-size: 50px;
-    cursor: pointer;
-  }
+    .form-inline {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+    }
 
-  .nps-element-section,
-  .emoji-element-section,
-  .thumbs-element-section,
-  .select-input,
-  .radiogroup,
-  .checkboxgroup {
-    overflow: hidden;
-  }
+    .form-inline label {
+      margin: 5px 10px 5px 0;
+    }
 
-  /* Old thumbs-wrapper starts (for old templates) */
-  .thumbs-wrapper {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-  }
+    .form-inline input {
+      vertical-align: middle;
+      margin: 5px 10px 5px 0;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
 
-  .thumbs-wrapper label {
-    color: rgb(30, 41, 59);
-    position: relative;
-    margin: 0px;
-    width: 7%;
-    height: 0px;
-    padding-bottom: 7%;
-  }
+    .form-inline button {
+      padding: 10px 20px;
+      background-color: dodgerblue;
+      border: 1px solid #ddd;
+      color: white;
+      cursor: pointer;
+    }
 
-  .thumbs-wrapper label input {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    margin: 0px;
-  }
+    .form-inline button:hover {
+      background-color: royalblue;
+    }
 
-  .thumbs-wrapper label span {
-    cursor: pointer;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-  }
+    @media (max-width: 800px) {
+      .form-inline input {
+        margin: 10px 0;
+      }
 
-  /* Old thumbs styles ends */
+      .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
 
-  /* New thumbs styles starts */
-  .new-thumbs .thumbs-wrapper {
-    display: block;
-    margin-bottom: 20px;
-  }
+    form {
+      /*border: 2px dashed black;*/
+      font-family: 'Helvetica';
+    }
 
-  .new-thumbs .thumbs-wrapper label {
-    display: inline-block;
-    color: rgb(30, 41, 59);
-    position: relative;
-    min-width: 40px;
-    min-height: 40px;
-    margin: 0 20px 0 0;
-    width: auto;
-    height: auto;
-    padding: 0;
-  }
+    /* Full-width input fields */
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 15px 0px 15px 0;
+      /* margin: 5px 0 22px 0; */
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
 
-  .new-thumbs .thumbs-wrapper label input {
-    opacity: 0;
-    position: absolute;
-    margin: 0px;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-  }
+    input[type=text]:focus,
+    input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
 
-  .new-thumbs .thumbs-wrapper label span {
-    position: static;
-    width: 100%;
-    height: 100%;
-    display: block;
-    cursor: pointer;
-    font-size: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
+    /* Overwrite default styles of hr */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
 
-  /* New thumbs styles ends */
+    /* Set a style for the submit button */
+    .registerbtn {
+      background-color: rgb(30, 41, 59);
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
 
-  .thumbs-wrapper label input:checked~span {
-    color: red;
-    font-size: 50px;
-    cursor: pointer;
-  }
+    .registerbtn:hover {
+      opacity: 1;
+    }
 
-  .thumbs-up-form-element,
-  .emoji-form-element,
-  .social-media-form-element {
-    padding-top: 15px;
-    width: 100%;
-  }
+    /* Add a blue text color to links */
+    a {
+      color: dodgerblue;
+    }
 
-  .radiogroup-options,
-  .checkboxgroup-options {
-    margin-bottom: 20px;
-  }
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+      background-color: #f1f1f1;
+      text-align: center;
+    }
+
+    @media only screen and (min-width: 480px) {
+      .col-sm-6 {
+        max-width: 50%;
+        width: 50%;
+      }
+
+      .col-sm-4 {
+        max-width: 33%;
+        width: 33%;
+      }
+
+      .col-sm-3 {
+        max-width: 25%;
+        width: 25%;
+      }
+
+      .col-sm-8 {
+        max-width: 66.67%;
+        width: 66.67%;
+      }
+
+      .col-sm-9 {
+        max-width: 75%;
+        width: 75%;
+      }
+    }
+
+    form.amp-form-submit-success>.step {
+      display: none;
+    }
+
+    form .qa {
+      margin: 0;
+      padding: 0;
+      font-size: 10pt;
+    }
+
+    form .qa>label {
+      font-weight: 700;
+      margin: 0;
+    }
+
+    form .qa>input {
+      margin: 0 0 24px 0;
+    }
+
+    form .qa>.select {
+      margin: 0 0 24px 0;
+    }
+
+    form .qa>.new-select {
+      position: relative;
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      padding: 0px;
+      margin: 0 0 24px 0;
+    }
+
+    form .qa input,
+    form .qa select,
+    form .qa textarea {
+      border-radius: 5px;
+      padding: 5px 12px;
+      border-color: rgb(203, 213, 225);
+      outline: none;
+    }
+
+    form .qa input:focus,
+    form .qa select:focus,
+    form .qa textarea:focus {
+      border-color: #0A8FFD;
+      box-shadow: 0 0 0 4px rgba(10, 143, 253, 0.2);
+      background: #fff;
+    }
+
+    form .qa input:hover,
+    form .qa select:hover,
+    form .qa textarea:hover {
+      border-color: #0A8FFD;
+      background: #FAFCFF;
+    }
+
+    form .form-text {
+      color: black;
+    }
+
+    form .qa .question {
+      display: block;
+      padding-bottom: 5px;
+      font-weight: 700;
+    }
+
+    form .qa .answer {
+      max-width: 100%;
+    }
+
+    form .qa .input-style {
+      color: rgb(30, 41, 59);
+      background-color: rgb(255, 255, 255);
+      font-family: Helvetica;
+      font-size: inherit;
+      width: 100%;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 5px;
+      border-color: rgb(203, 213, 225);
+      outline: none;
+      align-self: flex-start;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .nps-wrapper {
+      display: flex;
+      /*-webkit-box-pack: justify;*/
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 99%;
+    }
+
+    .nps-wrapper label {
+      color: rgb(30, 41, 59);
+      position: relative;
+      margin: 0px;
+      width: 7%;
+      height: 0px;
+      padding-bottom: 7%;
+    }
+
+    .nps-wrapper label input {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+      margin: 0px;
+    }
+
+    .nps-wrapper label span {
+      cursor: pointer;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      /*-webkit-box-pack: center;*/
+      justify-content: center;
+      /*-webkit-box-align: center;*/
+      align-items: center;
+      font-size: 18px;
+      font-weight: 300;
+      border: 2px solid rgb(226, 232, 240);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nps-wrapper span:hover {
+      border: 2px solid rgb(92, 85, 231);
+    }
+
+    .nps-wrapper label input:checked~span {
+      border: 2px solid rgb(92, 85, 231);
+      background-color: rgb(92, 85, 231);
+      color: rgb(255, 255, 255);
+      cursor: pointer;
+    }
+
+    .nps-text {
+      /* cursor: text;*/
+      font-size: 18px;
+      padding-bottom: 0;
+      padding-top: 0px;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
+
+    .nps-element-section,
+    .nps-element-section.qa {
+      width: 100%;
+    }
+
+    .nps-option-section {
+      width: 100%;
+      background: #fff;
+      margin-bottom: 20px;
+      padding: 15px 0;
+    }
+
+    .nps-option-section,
+    .emoji-option-section,
+    .thumbs-option-section {
+      width: 100%;
+    }
+
+    .nps-help-text {
+      display: none;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    .nps-help-text-option {
+      min-width: 4px;
+      padding: 5px 0 0 0;
+    }
+
+    .nps-help-text-active {
+      display: flex;
+    }
+
+    /* Old emoji styles starts (for old templates) */
+    .emoji-wrapper {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .emoji-wrapper label {
+      color: rgb(30, 41, 59);
+      position: relative;
+      margin: 0px;
+      width: 7%;
+      height: 0px;
+      padding-bottom: 7%;
+    }
+
+    .emoji-wrapper label input {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+      margin: 0px;
+    }
+
+    .emoji-wrapper label span {
+      cursor: pointer;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+    }
+
+    /* Old emoji styles ends */
+
+    /* New emoji styles starts */
+    .new-emoji .emoji-wrapper {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .new-emoji .emoji-wrapper label {
+      display: inline-block;
+      color: rgb(30, 41, 59);
+      position: relative;
+      min-width: 40px;
+      min-height: 40px;
+      margin: 0 5px;
+      width: auto;
+      height: auto;
+      padding: 0;
+    }
+
+    .new-emoji .emoji-wrapper label input {
+      opacity: 0;
+      position: absolute;
+      margin: 0px;
+      width: 100%;
+      height: 100%;
+      visibility: hidden;
+    }
+
+    .new-emoji .emoji-wrapper label span {
+      position: static;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: pointer;
+      font-size: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* New emoji styles ends */
+
+    .emoji-wrapper label input:checked~span {
+      font-size: 50px;
+      cursor: pointer;
+    }
+
+    .nps-element-section,
+    .emoji-element-section,
+    .thumbs-element-section,
+    .select-input,
+    .radiogroup,
+    .checkboxgroup {
+      overflow: hidden;
+    }
+
+    /* Old thumbs-wrapper starts (for old templates) */
+    .thumbs-wrapper {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 20px;
+    }
+
+    .thumbs-wrapper label {
+      color: rgb(30, 41, 59);
+      position: relative;
+      margin: 0px;
+      width: 7%;
+      height: 0px;
+      padding-bottom: 7%;
+    }
+
+    .thumbs-wrapper label input {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+      margin: 0px;
+    }
+
+    .thumbs-wrapper label span {
+      cursor: pointer;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+    }
+
+    /* Old thumbs styles ends */
+
+    /* New thumbs styles starts */
+    .new-thumbs .thumbs-wrapper {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .new-thumbs .thumbs-wrapper label {
+      display: inline-block;
+      color: rgb(30, 41, 59);
+      position: relative;
+      min-width: 40px;
+      min-height: 40px;
+      margin: 0 20px 0 0;
+      width: auto;
+      height: auto;
+      padding: 0;
+    }
+
+    .new-thumbs .thumbs-wrapper label input {
+      opacity: 0;
+      position: absolute;
+      margin: 0px;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .new-thumbs .thumbs-wrapper label span {
+      position: static;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: pointer;
+      font-size: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* New thumbs styles ends */
+
+    .thumbs-wrapper label input:checked~span {
+      color: red;
+      font-size: 50px;
+      cursor: pointer;
+    }
+
+    .thumbs-up-form-element,
+    .emoji-form-element,
+    .social-media-form-element {
+      padding-top: 15px;
+      width: 100%;
+    }
+
+    .radiogroup-options,
+    .checkboxgroup-options {
+      margin-bottom: 20px;
+    }
 
 
-  .new-radio-group .radiogroup-options .select-container,
-  .new-checkbox-group .checkboxgroup-options .select-container {
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    padding: 0px;
-    margin: 0px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: inherit;
-  }
+    .new-radio-group .radiogroup-options .select-container,
+    .new-checkbox-group .checkboxgroup-options .select-container {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      padding: 0px;
+      margin: 0px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: inherit;
+    }
 
-  .new-radio-group .select-outer-container,
-  .new-checkbox-group .select-outer-container {
-    padding: 8px 0;
-    font-weight: 700;
-  }
+    .new-radio-group .select-outer-container,
+    .new-checkbox-group .select-outer-container {
+      padding: 8px 0;
+      font-weight: 700;
+    }
 
-  .social-media-element {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center;
-  }
+    .social-media-element {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: center;
+    }
 
-  .button {
-    outline: none;
-    background-color: rgb(30, 41, 59);
-    color: rgb(255, 255, 255);
-    border-radius: 4px;
-    padding: 12px 24px;
-    margin: 5px;
-    height: auto;
-    width: auto;
-    letter-spacing: 1px;
-    border-width: 0px;
-    border-style: solid;
-    line-height: 1;
-    font-size: 16px;
-    font-family: Helvetica;
-    align-self: center;
-    text-align: center;
-    text-decoration: none;
-    word-wrap: normal;
-    word-break: break-word;
-  }
+    .button {
+      outline: none;
+      background-color: #fd9301;
+      color: rgb(255, 255, 255);
+      border-radius: 50px;
+      padding: 12px 24px;
+      margin: 5px;
+      height: auto;
+      width: auto;
+      letter-spacing: 1px;
+      border-width: 0px;
+      border-style: solid;
+      line-height: 1;
+      font-size: 16px;
+      font-family: Helvetica;
+      align-self: center;
+      text-align: center;
+      text-decoration: none;
+      word-wrap: normal;
+      word-break: break-word;
+      font-weight: 700;
+      margin:0px auto;
+      display:block;
+    }
 
-  #FORM60605181 .question {
-    font-weight: 400;
-  }
-</style>
+    #form_otpSMS .question {
+      font-weight: 700;
+    }
+    #lbl_sn, #joinDate {
+      width: 46%;
+      float: left;
+      margin-right: 20px;
+    }
+
+    #lbl_gioitinh, #input_gt {
+      width: 46%;
+      float: right;
+      
+    }
+    #input_gtNam,
+    #input_gtNu,
+    #input_gtOther {
+      width: 4%;
+      margin: 10px 0px 22px 5px;
+    }
+  </style>
+</head>
 
 <body>
-  <div class="outercontainer" id="outercontainer" style="box-sizing:border-box;max-width:700px;width:100%;">
-    <div class="smt-block" id="DIV61979716">
-      <div id="DIV65986363">
-        <div class="smt-column" id="DIV69379165">
-          <div class="smt-element" style="text-align: -webkit-center;" id="DIV69656628"><a href="https://www.prudential.com.vn/vi/" target="_blank">
-              <amp-img layout="responsive" width="312" height="58" src="https://newtwb.s3.amazonaws.com/images/voolatechsmt/logo-prudential.png" class="mw-100" style="max-width: 100%; height: auto; width: 38%;" id="IMG87616379"></amp-img>
-            </a></div>
+  <div class="outercontainer" id="outercontainer"
+    style="box-sizing:border-box;max-width:600px;width:100%; height: 900px;" align="center">
+    <div class="smt-block">
+      <div>
+        <div class="smt-column" id="header_banner">
+          <a href="https://www.google.com">
+            <div class="smt-element"
+              style="text-align: -webkit-center; width: 113px; height: 48px; margin-left: 45px; margin-top: -10px;"
+              id="DIV69656628"></div>
+          </a>
         </div>
       </div>
     </div>
-    <div class="smt-block" id="DIV60766120" style="padding-top: 0px;">
+    <div class="smt-block" id="DIV60766120" style="padding-top: 0px; width: 336px; height: 417px; margin-top: 260px;"
+      align="left">
       <div id="DIV69668719">
-        <div class="form-wrapper" style="padding: 0;" id="DIV91655552">
-          <form [hidden]="is_hide_main_form" id='form1' method="post" action-xhr="getotp.php" verify-xhr="getotp.php" on="submit-success:AMP.setState({phone: event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})" enctype="application/x-www-form-urlencoded">
+        <div class="form-wrapper" style="padding: 0;">
+          <form [hidden]="is_hide_main_form" id='form1' method="post" 
+          action-xhr="//118.71.251.188:59004/api/v1/authentication/request-otp-without-encrypt" 
+          verify-xhr="//118.71.251.188:59004/api/v1/authentication/request-otp-without-encrypt" 
+          on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})"
+          enctype="application/x-www-form-urlencoded" target="_top">
             <div class="step">
               <p class="qa" id="P56165572">
-                <label class="question cke_edited" id="lblINPUT00157581" for="sdt" aria-readonly="false">Số điện
-                  thoại&nbsp;*</label>
-                <input class="answer input-style" type="text" placeholder="Phone" required="" id="phone" name="phone">
-              </p>
-              <section class="select-input qa" id="SECTION21106024">
-                <label class="question cke_edited" id="lblSELECT96006219" for="SELECT96006219" aria-readonly="false">Nơi
-                  sinh sống&nbsp;*</label>
-                <p class="select new-select" id="city">
-                  <select class="answer input-style user-valid valid" id="city" name="city" required="required">
-                    <option value="" disabled="" selected="" hidden="" style="color:rgb(203, 213, 225);" id="OPTION96122424">Nơi sinh sống</option>
-                    <option value="0&&Hà Nội">Hà Nội</option>
-                    <option value="1&&TP Hồ Chí Minh">TP Hồ Chí Minh</option>
-                    <option value="2&&An Giang">An Giang</option>
-                    <option value="3&&Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
-                    <option value="4&&Bắc Giang">Bắc Giang</option>
-                    <option value="5&&Bắc Kạn">Bắc Kạn</option>
-                    <option value="6&&Bạc Liêu">Bạc Liêu</option>
-                    <option value="7&&Bắc Ninh">Bắc Ninh</option>
-                    <option value="8&&Bến Tre">Bến Tre</option>
-                    <option value="9&&Bình Định">Bình Định</option>
-                    <option value="10&&Bình Dương">Bình Dương</option>
-                    <option value="11&&Bình Phước">Bình Phước</option>
-                    <option value="12&&Bình Thuận">Bình Thuận</option>
-                    <option value="13&&Cà Mau">Cà Mau</option>
-                    <option value="14&&Cao Bằng">Cao Bằng</option>
-                    <option value="15&&Cần Thơ">Cần Thơ</option>
-                    <option value="16&&Đà Nẵng">Đà Nẵng</option>
-                    <option value="17&&Đắk Lắk">Đắk Lắk</option>
-                    <option value="18&&Đắk Nông">Đắk Nông</option>
-                    <option value="19&&Điện Biên">Điện Biên</option>
-                    <option value="20&&Đồng Nai">Đồng Nai</option>
-                    <option value="21&&Đồng Tháp">Đồng Tháp</option>
-                    <option value="22&&Gia Lai">Gia Lai</option>
-                    <option value="23&&Hà Giang">Hà Giang</option>
-                    <option value="24&&Hà Nam">Hà Nam</option>
-                    <option value="25&&Hà Tĩnh">Hà Tĩnh</option>
-                    <option value="26&&Hải Dương">Hải Dương</option>
-                    <option value="27&&Hải Phòng">Hải Phòng</option>
-                    <option value="28&&Hậu Giang">Hậu Giang</option>
-                    <option value="29&&Hòa Bình">Hòa Bình</option>
-                    <option value="30&&Hưng Yên">Hưng Yên</option>
-                    <option value="31&&Khánh Hòa">Khánh Hòa</option>
-                    <option value="32&&Kiên Giang">Kiên Giang</option>
-                    <option value="33&&Kon Tum">Kon Tum</option>
-                    <option value="34&&Lai Châu">Lai Châu</option>
-                    <option value="35&&Lâm Đồng">Lâm Đồng</option>
-                    <option value="36&&Lạng Sơn">Lạng Sơn</option>
-                    <option value="37&&Lào Cai">Lào Cai</option>
-                    <option value="38&&Long An">Long An</option>
-                    <option value="39&&Nam Định">Nam Định</option>
-                    <option value="40&&Nghệ An">Nghệ An</option>
-                    <option value="41&&Ninh Bình">Ninh Bình</option>
-                    <option value="42&&Ninh Thuận">Ninh Thuận</option>
-                    <option value="43&&Phú Thọ">Phú Thọ</option>
-                    <option value="44&&Phú Yên">Phú Yên</option>
-                    <option value="45&&Quảng Bình">Quảng Bình</option>
-                    <option value="46&&Quảng Nam">Quảng Nam</option>
-                    <option value="47&&Quảng Ngãi">Quảng Ngãi</option>
-                    <option value="48&&Quảng Ninh">Quảng Ninh</option>
-                    <option value="49&&Quảng Trị">Quảng Trị</option>
-                    <option value="50&&Sóc Trăng">Sóc Trăng</option>
-                    <option value="51&&Sơn La">Sơn La</option>
-                    <option value="52&&Tây Ninh">Tây Ninh</option>
-                    <option value="53&&Thái Bình">Thái Bình</option>
-                    <option value="54&&Thái Nguyên">Thái Nguyên</option>
-                    <option value="55&&Thanh Hóa">Thanh Hóa</option>
-                    <option value="56&&Thừa Thiên Huế">Thừa Thiên Huế</option>
-                    <option value="57&&Tiền Giang">Tiền Giang</option>
-                    <option value="58&&Trà Vinh">Trà Vinh</option>
-                    <option value="59&&Tuyên Quang">Tuyên Quang</option>
-                    <option value="60&&Vĩnh Long">Vĩnh Long</option>
-                    <option value="61&&Vĩnh Phúc">Vĩnh Phúc</option>
-                    <option value="62&&Yên Bái">Yên Bái</option>
-                  </select>
-                </p>
-              </section>
-              <section class="stepflowbuttons" style="text-align: center;" id="btn-get"><button type="submit" class="button cke_edited" style="background-color: rgb(255, 0, 0);">Gửi<br></button></section>
+                <label class="question cke_edited" id="lbl_name" for="name" aria-readonly="false">Họ tên *</label>
+                <input class="answer input-style" type="text" placeholder="Họ tên" required="" id="fullName"
+                  name="fullName">
 
-              <div submit-error>
-                <template type="amp-mustache">
-                  <div id="FORM60605181-successhtml" style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
-                    {{#verifyErrors}}
-                      <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">
-                        {{message}}
-                      </p>
-                    {{/verifyErrors}}
-                  </div>
-                </template>
-              </div>
+                <label class="question cke_edited" id="lbl_sn" for="sn" aria-readonly="false">Ngày sinh *</label>
+                
+                <label class="question cke_edited" id="lbl_gioitinh" for="gt" aria-readonly="false">Giới tính *</label>
+
+                <input class="answer input-style" type="date" placeholder="Ngày sinh" required=""
+                  id="joinDate" name="joinDate">
+
+                <input class="answer input-style" type="radio" required=""
+                  id="input_gtNam" name="gender" value="Nam" checked>
+                <label for="Nam">Nam</label>
+
+                <input class="answer input-style" type="radio" required=""
+                  id="input_gtNu" name="gender" value="Nu">
+                <label for="Nu">Nữ</label>
+
+                <input class="answer input-style" type="radio" required=""
+                  id="input_gtOther" name="gender" value="Khac">
+                <label for="Khac">Khác</label>
+
+                <label class="question cke_edited" id="lbl_sdt" for="sdt" aria-readonly="false">Số điện thoại *</label>
+                <input class="answer input-style" type="tel" placeholder="Số điện thoại" required="" id="cellphone"
+                  name="cellphone" pattern="[0-9]{10}?">
+
+                <label class="question cke_edited" id="lbl_sdt" for="email" aria-readonly="false">Email *</label>
+                <input class="answer input-style" type="email" placeholder="Email" required="" id="email"
+                  name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+              </p>
+
+                <button type="submit" class="button cke_edited" style="background-color:#fd9301;">
+                    LẤY MÃ NGAY
+                </button>
 
             </div>
+            
+            <div submit-error>
+              <template type="amp-mustache">
+                <div id="form_otpSMS-successhtml" style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
+                  {{#verifyErrors}}
+                    <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;" id="P78668551">
+                      {{message}}
+                    </p>
+                  {{/verifyErrors}}
+                </div>
+              </template>
+            </div>
           </form>
-
-          <form hidden [hidden]="is_hide_confirm" id='form2' method="post" action-xhr="confirm.php" verify-xhr="confirm.php" on="submit-error:AMP.setState({phone: event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
+          <form hidden [hidden]="is_hide_confirm" id='form2' method="post" action-xhr="//otp-sms-demo:8888/confirm.php" verify-xhr="//otp-sms-demo:8888/confirm.php" on="submit-error:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
 
             <div class="step">
-              <input hidden name="phone" id="phone-confirm" [value]="phone">
+              <input hidden name="cellphone" id="phone-confirm" [value]="cellphone">
               <p class="qa">
-                <label class="question cke_edited" for="otp-confirm-code" aria-readonly="false">Mã OTP&nbsp;*</label>
+                <label class="question cke_edited" for="otp-confirm-code" aria-readonly="false">Mã OTP*</label>
                 <input class="answer input-style" type="text" placeholder="Mã OTP" required="" id="otp-confirm-code" name="otp-confirm-code">
               </p>
 
@@ -875,11 +852,12 @@
 
           </form>
 
-          <form hidden [hidden]="is_hide_reset" id='form3' method="post" action-xhr="resendotp.php" verify-xhr="resendotp.php" on="submit-success:AMP.setState({phone: event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
+          <form hidden [hidden]="is_hide_reset" id='form3' method="post" action-xhr="//otp-sms-demo:8888/resendotp.php" verify-xhr="//otp-sms-demo:8888/resendotp.php" 
+          on="submit-success:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
 
             <p class="qa">
               <label class="question cke_edited" for="otp-resend-phone" aria-readonly="false">Phone&nbsp;*</label>
-              <input class="answer input-style" type="text" placeholder="Số điện thoại" required="" id="otp-resend-phone" name="phone" [value]="phone">
+              <input class="answer input-style" type="tel" placeholder="Số điện thoại" required="" id="otp-resend-phone" name="cellphone" [value]="cellphone" pattern="[0-9]{10}?">
             </p>
 
             <section class="stepflowbuttons" style="text-align: center;" id="btn-resend"><button type="submit" class="button cke_edited" style="background-color: rgb(255, 0, 0);">Nhận lại<br></button></section>
@@ -889,6 +867,7 @@
             </div>
 
           </form>
+
         </div>
       </div>
     </div>
