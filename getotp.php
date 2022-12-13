@@ -35,7 +35,7 @@ try {
         }
 
         throw new Exception(
-            $otpResponse['messageCode']
+            'Không thể gửi OTP'
         );
     }
 
