@@ -5,7 +5,7 @@ $otpClient = new TCSotpAPI();
 try {
     $response = [];
     $code = isset($_POST['otp-confirm-code']) ? strtoupper($_POST['otp-confirm-code']) : false;
-    $phone = isset($_POST['phone']) ? $_POST['phone'] : false;
+    $phone = isset($_POST['cellphone']) ? $_POST['cellphone'] : false;
 
     if (!$phone || !$code) {
         $response['is_hide_reset'] = true;

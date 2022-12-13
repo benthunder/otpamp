@@ -4,7 +4,7 @@ $otpClient = new TCSotpAPI();
 
 try {
     $response = [];
-    $phone = isset($_POST['phone']) ? $_POST['phone'] : false;
+    $phone = isset($_POST['cellphone']) ? $_POST['cellphone'] : false;
 
     if (!$phone) {
         throw new Exception(

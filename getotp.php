@@ -4,11 +4,9 @@ $otpClient = new TCSotpAPI();
 
 try {
     $response = [];
+    $phone = isset($_POST['cellphone']) ? $_POST['cellphone'] : false;
 
-    $city = isset($_POST['city']) ? $_POST['city'] : false;
-    $phone = isset($_POST['phone']) ? $_POST['phone'] : false;
-
-    if (!$phone || !$city) {
+    if (!$phone) {
 
         $response['is_hide_reset'] = true;
         $response['is_hide_main_form'] = false;
@@ -20,8 +18,8 @@ try {
     }
 
     $response['phone'] = $phone;
-    $otpResponse = $otpClient->sendSMS($phoneEnc);
-
+    $otpResponse = $otpClient->sendSMS($phone);
+    var_dump($otpResponse);
     if (!is_array($otpResponse)) {
         throw new Exception(
             'Không thể gửi OTP'
@@ -44,5 +42,4 @@ try {
     $response['verifyErrors']['message'] = $e->getMessage();
 } finally {
     echo json_encode($response);
-    exit();
 }

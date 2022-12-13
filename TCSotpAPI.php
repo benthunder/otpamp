@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /**
  * Created by PhpStorm.
  * User: SpeedSMS
@@ -18,7 +20,7 @@ class TCSotpAPI {
 
         $headers = array('Content-type: application/json', 'tgs-version: 2.7.5');
 
-        $url = $this->ROOT_URL . '/authentication/request-otp';
+        $url = $this->ROOT_URL . '/authentication/request-otp-without-encrypt';
         $http = curl_init($url);
         curl_setopt($http, CURLOPT_HEADER, false);
         curl_setopt($http, CURLOPT_CUSTOMREQUEST, "POST");
