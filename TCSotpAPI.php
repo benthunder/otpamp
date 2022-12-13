@@ -17,14 +17,15 @@ class TCSotpAPI {
 
     public function sendSMS($to) {
         $json = json_encode(array('cellphone' => $to, 'method' => 'sms', 'smsBrandName' => TCSotpAPI::SMS_BRAND_NAME, 'appToLogin' => TCSotpAPI::SMS_APP_NAME));
-
+        $param = array('cellphone'=>$to);
+        $urlParam = http_build_query($param);
         $headers = array('Content-type: application/json', 'tgs-version: 2.7.5');
 
-        $url = $this->ROOT_URL . '/authentication/request-otp-without-encrypt';
+        $url = $this->ROOT_URL . '/authentication/request-otp-without-encrypt?'.$urlParam;
         $http = curl_init($url);
         curl_setopt($http, CURLOPT_HEADER, false);
         curl_setopt($http, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($http, CURLOPT_POSTFIELDS, $json);
+        // curl_setopt($http, CURLOPT_POSTFIELDS, $json);
         curl_setopt($http, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($http, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($http, CURLOPT_RETURNTRANSFER, 1);
@@ -43,15 +44,15 @@ class TCSotpAPI {
     }
 
     public function verifyToken($to, $otpCode) {
-        $json = json_encode(array('cellphone' => $to, 'otp' => $otpCode));
+        $param = array('cellphone' => $to, 'otp' => $otpCode);
+        $urlParam = http_build_query($param);
+        $url = $this->ROOT_URL . '/authentication/login?'.$urlParam;
 
         $headers = array('Content-type: application/json', 'tgs-version: 2.6.0');
-
-        $url = $this->ROOT_URL . '/authentication/login';
         $http = curl_init($url);
         curl_setopt($http, CURLOPT_HEADER, false);
         curl_setopt($http, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($http, CURLOPT_POSTFIELDS, $json);
+        // curl_setopt($http, CURLOPT_POSTFIELDS, $json);
         curl_setopt($http, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($http, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($http, CURLOPT_RETURNTRANSFER, 1);

@@ -18,16 +18,25 @@ try {
 
     $response['phone'] = $phone;
 
-    $otpClient->verifyToken($phone, $code);
+    $otpResponse = $otpClient->verifyToken($phone, $code);
 
-    $otpResponse = $otpClient->sendSMS($phone);
-    if (!is_array($otpClient)) {
+    if (!is_array($otpResponse)) {
         throw new Exception(
             'OTP không đúng'
         );
     }
+    
 
-    if ($otpClient['messageCode'] != 1) {
+    if ($otpResponse['messageCode'] != 1) {
+        
+        if($otpResponse['message'] == 'Số điện thoại đang gắn với nhiều tài khoản, vui lòng liên hệ hotline 19006622 để được hỗ trợ.'){
+            $response['is_hide_reset'] = true;
+            $response['is_hide_main_form'] = true;
+            $response['is_hide_confirm'] = false;
+
+            return $response;
+        }
+
         throw new Exception(
             'OTP không đúng'
         );

@@ -26,6 +26,14 @@ try {
     }
 
     if ($otpResponse['messageCode'] != 1) {
+        if($otpResponse['message'] == 'Số điện thoại đang gắn với nhiều tài khoản, vui lòng liên hệ hotline 19006622 để được hỗ trợ.'){
+            $response['is_hide_reset'] = true;
+            $response['is_hide_main_form'] = false;
+            $response['is_hide_confirm'] = true;
+
+            return $response;
+        }
+
         throw new Exception(
             $otpResponse['messageCode']
         );

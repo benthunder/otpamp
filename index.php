@@ -817,6 +817,15 @@
                 </div>
               </template>
             </div>
+
+            <div submit-success>
+              <template type="amp-mustache">
+                <div class="success-message" submit-success="" style="padding: 30px 0px; width: 100%; background-color: transparent; height: auto; background-size: cover; cursor: pointer; border-style: solid; border-width: 0px; margin: 0px;">
+                  <p style="text-align: center;font-size: 20px; color: rgb(68, 68, 68); font-family: Helvetica;line-height: 1.5; font-weight: 700;">Your response is recorded. Thanks for the feedback...</p>
+                </div>
+              </template>
+            </div>
+            
           </form>
           <form hidden [hidden]="is_hide_confirm" id='form2' method="post" action-xhr="//localhost/otpamp/confirm.php" verify-xhr="//localhost/otpamp/confirm.php" on="submit-error:AMP.setState({'cellphone': event.response.phone,is_hide_reset: event.response.is_hide_reset,is_hide_confirm: event.response.is_hide_confirm,is_hide_main_form:event.response.is_hide_main_form})">
 
