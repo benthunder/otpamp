@@ -1,5 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: origin,content-type,content-length,user-agent,host,accept,authorization");
+
 require_once './TCSotpAPI.php';
 $otpClient = new TCSotpAPI();
 
