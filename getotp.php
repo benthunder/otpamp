@@ -19,7 +19,6 @@ try {
 
     $response['phone'] = $phone;
     $otpResponse = $otpClient->sendSMS($phone);
-    var_dump($otpResponse);
     if (!is_array($otpResponse)) {
         throw new Exception(
             'Không thể gửi OTP'
@@ -28,7 +27,7 @@ try {
 
     if ($otpResponse['messageCode'] != 1) {
         throw new Exception(
-            'Không thể gửi OTP'
+            $otpResponse['messageCode']
         );
     }
 

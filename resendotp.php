@@ -5,7 +5,7 @@ $otpClient = new TCSotpAPI();
 try {
     $response = [];
     $phone = isset($_POST['cellphone']) ? $_POST['cellphone'] : false;
-
+    
     if (!$phone) {
         throw new Exception(
             'Thiếu dữ liệu , xin nhập lại'
