@@ -1,8 +1,5 @@
 <?php
-require_once './config.php';
 require_once './TCSotpAPI.php';
-
-$config = new Config();
 $otpClient = new TCSotpAPI();
 
 try {
