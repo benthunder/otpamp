@@ -1,7 +1,13 @@
 <?php
-// header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
+header('HTTP/1.1 200 OK');
+header("access-control-allow-credentials:true");
+header("AMP-Same-Origin: true");
+header("Access-Control-Allow-Origin:".$_SERVER['HTTP_ORIGIN']);
+header("amp-access-control-allow-source-origin: https://".$_SERVER['HTTP_HOST']);
+header("Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin");
+header("access-control-allow-headers:Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token");
+header("access-control-allow-methods:POST, GET, OPTIONS");
+header("Content-Type: application/json");
 
 require_once './TCSotpAPI.php';
 $otpClient = new TCSotpAPI();
